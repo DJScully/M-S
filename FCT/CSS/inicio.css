@@ -1,0 +1,178 @@
+@import "../bootstrap-4.5.2-dist/css/bootstrap.css";
+
+:root {
+    box-sizing: border-box;
+  }
+  
+  * {
+    box-sizing: inherit;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  html,body{
+      height: 100%;
+      font-family: "Roboto";
+  }
+
+.fullWidth{
+    max-width: 100%;
+   
+}
+
+.principal{
+    background-image: linear-gradient(to bottom, #ffa2f0,#ffffff); margin-bottom: 80px;
+}
+
+
+.container{
+    max-width: calc(100% - 40px);
+    margin: 0 auto;
+}
+
+.container1270{
+    width: 1270px;
+}
+
+.barra{
+    border: none;
+}
+
+.logo_meet{
+    display: flex;
+    justify-content: center;
+}
+
+.list-group-item{
+    border: none;
+    background-color: transparent;
+    font-weight: bold;
+    width: 100%;
+}
+
+.list-group-item:hover{
+     background-image: linear-gradient(to left, #f265da, #ffc7f9); 
+     border-radius: 25px;
+     transition: .2s;
+}
+
+.list-group-item:first-child:hover{
+    background-image: linear-gradient(to left, #f265da, #ffc7f9); 
+    border-radius: 25px;
+}
+
+.list-group-item:last-child:hover{
+    background-image: linear-gradient(to left, #f265da, #ffc7f9); 
+     border-radius: 25px;
+}
+
+
+.list-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.bot{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+   
+    font-size: 20px;
+   
+}
+
+.title{
+    font-size: 25px;
+    font-weight: normal;
+    width: 100%; 
+    margin-bottom: 10%;
+    margin-top: 10%;
+}
+
+.lado,.send{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lado{
+    justify-content: center;
+}
+
+
+.sep {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5%;
+}
+
+.sep > img{
+    width: 300px;
+    height: 300px;
+}
+
+.titulo{
+    margin-top: 10%;
+    display: flex;
+    font-size: 32px;
+    justify-content: center;
+    align-items: center;
+   
+    text-decoration: underline;
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+.card {
+    border: none;
+}
+
+.card-deck{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-left: 3%;
+    width: 100%;
+}
+
+.fullWidth:last-child{
+    margin: 0;
+}
+
+.foot{
+    margin-top: 10%;
+    background-image: linear-gradient(to top, #ffa2f0,#ffffff);
+    
+}
+.final{
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 0;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.final-list{
+    list-style-type: none;
+    margin-bottom: 4%;
+}
+
+.final-list > a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 40px;
+}
+
+.final-list:hover{
+    background-image: linear-gradient(to left, #f265da, #ffc7f9); 
+    border-radius: 25px;
+    transition: .2s;
+}
+
