@@ -1,0 +1,52 @@
+@import "inicio.css";
+
+.registro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.principal{
+    margin-bottom: 0;
+}
+
+.fullWidth:last-child{
+    margin-top: 10%;
+}
+
+.lab{
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 2%;
+    margin-bottom: 20px;
+}
+
+.test::placeholder{
+    color: black;
+}
+
+.test{
+    width: 40%;
+    border: solid 2px;
+    padding: 5px;
+}
+
+.test:hover{
+    transition: .3s;
+    border-color: #ffa2f0;
+}
+
+.test:focus{
+    background-color: #83fffd;
+}
+
+.requisitos{
+    margin-top: 4%;
+}
+
+.sub{
+    width: 20%;
+    border-radius: 25px;
+    margin-top: 4%;
+}
