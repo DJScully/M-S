@@ -1,0 +1,13 @@
+@import "inicio.css";
+
+.parrafo {
+    font-size: 25px;
+    font-weight: normal;
+    width: 100%;
+    margin-bottom: 4%;
+    margin-top: 4%;
+}
+
+.fullWidth:last-child{
+    margin-top: 10%;
+}

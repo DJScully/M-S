@@ -21,13 +21,18 @@
 }
 
 .principal{
-    background-image: linear-gradient(to bottom, #ffa2f0,#ffffff); margin-bottom: 80px;
+    background-image: linear-gradient(to bottom, #ffa2f0,#ffffff);
+    margin-bottom: 80px;
 }
 
 
 .container{
     max-width: calc(100% - 40px);
     margin: 0 auto;
+}
+
+button:active{
+    border: none;
 }
 
 .container1270{
@@ -121,7 +126,7 @@
     font-size: 32px;
     justify-content: center;
     align-items: center;
-   
+    margin-bottom: 5%;
     text-decoration: underline;
     font-weight: bold;
     font-style: italic;
@@ -160,6 +165,10 @@
 .final-list{
     list-style-type: none;
     margin-bottom: 4%;
+}
+
+.final-list {
+    padding: 5px;
 }
 
 .final-list > a {
