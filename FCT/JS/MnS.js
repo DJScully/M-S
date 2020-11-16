@@ -23,7 +23,7 @@ $(document).ready(function() {
   });
 
   $(document).ready(function() {
-	var mayor = $('.card-img-top').eq(2).height(); // tomamos el valor primero como mayor
+	var mayor = $('.card-img-top').eq(0).height(); // tomamos el valor primero como mayor
 	// recorremos cada card-img-top existente comparando su altura con la variable ya almacenada
 	// si la altura almacenada es menor a la altura del loop se asigna nuevamente
 	$('.card-img-top').each(function() {
