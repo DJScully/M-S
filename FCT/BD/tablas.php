@@ -73,13 +73,7 @@ return false;
             $sql->bindParam(":pass", $hash);
             $sql->bindParam(":correo", $correo);
 
-            if ($sql->execute()) {
-                echo "New record created successfully";
-                
-              } else {
-                echo "Unable to create record";
-                echo password_hash($pass, PASSWORD_DEFAULT);
-              }
+             ($sql->execute());
         }
 
         function anadirRegalo($usr,$dir_recogida,$dir_entrega,$hora_recogida,$hora_entrega){
@@ -150,14 +144,7 @@ return false;
             $res = $sql->fetchAll();
             $name=$res[0]["nombre"];
 
-            if(password_verify($pass, $res[0]["contraseña"])){
-                echo "<br> Hola ".$res[0]["contraseña"] . " " . $name;
-
-            }
-
             setcookie("Nombre", $name, time()+3600);
-
-            echo $_COOKIE["Nombre"];
             
         }
 
