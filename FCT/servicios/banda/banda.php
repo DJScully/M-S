@@ -18,7 +18,7 @@
                     <ul class="list-group list-group-horizontal-lg">
                         <li class="list-group-item"> <a href="../.."><button class="bot">Principal</button></a></li>
                         <li class="list-group-item"> <a href="../../Q_somos/quienes.html"><button class="bot">Quienes somos</button></a>   </li>
-                        <li class="list-group-item"> <a href="../"><button class="bot">Servicios</button></a> </li>                        
+                        <li class="list-group-item"> <a href="../opcion.html"><button class="bot">Servicios</button></a> </li>                        
                         <li class="list-group-item"> <a href="#"><button class="bot">Foro</button></a></li>
                         <li class="list-group-item"> <a href="../../Registro/login.html"><button class="bot">Log in</button></a></li>
                     </ul>
@@ -31,15 +31,69 @@
     <section class="fullWidth">
 
         <div class="container container1270">
+        <?php
+       
+
+        include("../../BD/tablas.php");
+            $estilo;$dir;$hora;$duracion;$errores = [];
+
+            $good = false;
+            if (isset($_POST["Enviar"])) {
+                if (isset($_POST["style"]) && !empty("style")) {
+                    if ($_POST["style"] == "electro" || $_POST["style"] == "concierto") {
+                       $estilo = $_POST["style"];
+                    } else {
+                        array_push($errores,"Por favor, escoja un estilo");
+                    }
+                }
+
+                if (isset($_POST["calle"]) && !empty($_POST["calle"])) {
+                    $dir = $_POST["calle"];
+                } else {
+                    array_push($errores,"No ha introducido dirección");
+                }
+
+                if (isset($_POST["hora"]) && !empty($_POST["hora"])) {
+                    $mañana = time() + (7 * 24 * 60 * 60);
+                  
+                    $mañana =  date("Y-m-d G-i");
+                    if ($_POST["hora"] > $mañana) {
+                        $hora = $_POST["hora"];
+                        $good = true;
+                    } else {
+                        array_push($errores,"Se debe alquilar con una semana de antelación");
+                    }
+                } else {
+                    array_push($errores,"No ha introducido fecha");
+                }
+
+                if (isset($_POST["alquiler"]) && !empty($_POST["alquiler"])) {
+                    if ($_POST["alquiler"] > 2) {
+                        $duracion = $_POST["alquiler"];
+                    } else {
+                        array_push($errores, "Las horas mínimas de alquiler son de 2 horas");
+                    }
+                }
+            }
+
+            if (isset($_POST["Enviar"]) && $good == true) {
+              
+                $banda = new tablas();
+
+                $banda->anadirBanda($estilo,$dir,$hora,$duracion);
+                $banda->anadirServicio("Banda",$dir,$hora);
+            } else {
+
+        ?>
             
-            <form action= "" method="post" class="registro">
+            <form action= "<?php $_SERVER["PHP_SELF"]?>" method="post" class="registro">
 
                 <h2 class="titulo"> Estilo instrumental </h2>
 
                 <select name="style" id="id_style" class="select">
-                <option class="opcion" value="null">Escoga estilo</option>
-                    <option class="opcion" value="electro">Acústica</option>
-                    <option class="opcion" value="concierto">Eléctrica</option>
+                    <option class="opcion" value="null">Escoga estilo</option>
+                    <option class="opcion" value="concierto">Acústica</option>
+                    <option class="opcion" value="electro">Eléctrica</option>
                 </select>
                 
                 <div class="inactive">
@@ -61,6 +115,13 @@
                 
                 <input class="test sub" type="submit" name="Enviar">
                 </form>
+<?php 
+    for ($i=0; $i < count($errores); $i++) { 
+        echo $errores[$i] . "<br>";
+    }
+}
+?>
+
 
         </div>
 

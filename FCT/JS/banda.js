@@ -10,5 +10,8 @@ function estilo(){
     var a = document.getElementById("id_style").value;
     if (a == "electro" || a == "concierto") {
         document.getElementsByClassName("inactive")[0].style.display = "flex";
+    } else {
+        document.getElementsByClassName("inactive")[0].style.display = "none";
+
     }
 }

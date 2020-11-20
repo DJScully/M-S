@@ -6,6 +6,7 @@
     <title>Meet & Surprizo </title>
     <link rel="stylesheet" href="../CSS/log.css">
     <link rel="shortcut icon" href="../img/ms-icon-310x310.png" type="image/x-icon">
+    <script src="../JS/test.js"></script>
 </head>
 <body>
     <header class="principal fullWidth">
@@ -69,7 +70,6 @@
         
             if(isset($_POST["Enviar"]) && count($errores) == 0){
                 $db = new tablas();
-
                 $new = $db->buscar($correo,$pass);
                 setcookie("Usuario",$new,3600);
                 
@@ -113,5 +113,6 @@
                 </ul>
             </div>
         </footer>
+        
 </body>
 </html>
