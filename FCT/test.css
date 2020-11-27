@@ -1,0 +1,15 @@
+@import "CSS/registro.css";
+
+.final-list::after{
+    content:"|";
+}
+
+.final-list:last-child::after{
+    content:"";
+}
+
+.final-list>a:focus::after,.final-list>a:focus::before{
+    content:"*";
+}
+
+

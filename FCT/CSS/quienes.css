@@ -11,3 +11,29 @@
 .fullWidth:last-child{
     margin-top: 10%;
 }
+
+
+@media (max-width: 970px){
+
+    .parrafo {
+        font-size: 15px;
+    }
+
+   
+
+    #toogle{
+        margin-bottom: 5%;
+    }
+}
+
+@media (max-width: 570px){
+
+    .parrafo {
+        font-size: 15px;
+    }
+
+
+    #toogle{
+        margin-bottom: 10%;
+    }
+}

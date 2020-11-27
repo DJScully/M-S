@@ -15,7 +15,7 @@
                 <img src="../img/Meet & Surprizo.png" alt="Meet & Surprizo" class="logo">
             </div>
             <div class="barra">
-                
+            <button class="toogle" id="toogle">☰</button>
                     <ul class="list-group list-group-horizontal-lg">
                         <li class="list-group-item"> <a href=".."><button class="bot">Principal</button></a></li>
                         <li class="list-group-item"> <a href="../Q_somos/quienes.html"><button class="bot">Quienes somos</button></a>   </li>
@@ -113,6 +113,6 @@
                 </ul>
             </div>
         </footer>
-        
+        <script src="../JS/form.js"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 <?php 
+session_start();
 
 include("conectaBD.php");
 class tablas extends conectaBD{ 
@@ -33,7 +34,7 @@ return false;
         
         $sql = "CREATE TABLE IF NOT EXISTS regalo (Nombre varchar(25) NOT NULL,
         D_recogida varchar(255)  NOT NULL,
-        D_llegada varchar  NOT NULL,
+        D_llegada varchar(255)  NOT NULL,
         H_recogida datetime  NOT NULL PRIMARY KEY,
         H_llegada datetime  NOT NULL)";
 
@@ -57,9 +58,9 @@ return false;
 
         function servicio(){
 
-        $sql = "CREATE TABLE IF NOT EXISTS historial (Estilo varchar(255) NOT NULL,
+        $sql = "CREATE TABLE IF NOT EXISTS historial (correo varchar(255), Estilo varchar(255) NOT NULL,
         D_Evento varchar(255) NOT NULL,
-        Fecha datetime NOT NULL PRIMARY KEY)";
+        Fecha datetime NOT NULL)";
    
    
         if( $this->db->exec($sql) !== false) return true;
@@ -77,22 +78,24 @@ return false;
         }
 
         function anadirRegalo($usr,$dir_recogida,$dir_entrega,$hora_recogida,$hora_entrega){
-
-            $sql = $this->db->prepare("INSERT INTO usuarios (nombre, D_recogida, D_llegada, H_recogida, H_llegada) VALUES (:usr, :dir_recogida, :dir_entrega
+            $this->db->errorInfo();
+            $sql = $this->db->prepare("INSERT INTO regalo (Nombre, D_recogida, D_llegada, H_recogida, H_llegada) VALUES (:usr, :dir_recogida, :dir_entrega
              :hora_recogida, :hora_entrega)");
            
             $sql->bindParam(":usr", $usr);
-            $sql->bindParam(":dir_recogida", $hash);
-            $sql->bindParam(":dir_entrega", $correo);
-            $sql->bindParam(":hora_recogida", $hash);
-            $sql->bindParam(":hora_entrega", $correo);
+            $sql->bindParam(":dir_recogida", $dir_recogida);
+            $sql->bindParam(":dir_entrega", $dir_entrega);
+            $sql->bindParam(":hora_recogida", $hora_recogida);
+            $sql->bindParam(":hora_entrega", $hora_entrega);
 
             if ($sql->execute()) {
                 echo "New record created successfully";
                 
               } else {
-                echo "Unable to create record";
-               
+                echo "Unable to create record ";
+                print_r($this->db->errorInfo());
+
+                
               }
         }
 
@@ -115,17 +118,18 @@ return false;
               }
         }
 
-        function anadirServicio($Estilo,$D_Evento,$H_recogida){
+        function anadirServicio($correo,$Estilo,$D_Evento,$H_recogida){
 
             /*CREATE TABLE IF NOT EXISTS historial (Estilo varchar(255) NOT NULL,
         D_Evento varchar(255) NOT NULL,
         Fecha datetime NOT NULL PRIMARY KEY)*/
-            $sql = $this->db->prepare("INSERT INTO historial (Estilo, D_Evento, Fecha) VALUES (:usr, :pass, :correo)");
+            $sql = $this->db->prepare("INSERT INTO historial (correo, Estilo, D_Evento, Fecha) VALUES (:cor,:usr, :pass, :correo)");
+            $sql->bindParam(":cor", $correo);
             $sql->bindParam(":usr", $Estilo);
             $sql->bindParam(":pass", $D_Evento);
             $sql->bindParam(":correo", $H_recogida);
           
-           
+           echo $_SESSION["Correo"];
 
             if ($sql->execute()) {
                 echo "New record created successfully";
@@ -137,19 +141,27 @@ return false;
         }
 
         function buscar($correo,$pass){
-            $sql = $this->db->prepare("SELECT nombre, contraseña FROM usuarios WHERE correo=:correo");
+
+            $sql = $this->db->prepare("SELECT nombre, correo FROM usuarios WHERE correo=:correo");
             $sql->bindParam(":correo", $correo);
             
             $sql->execute();
             $res = $sql->fetchAll();
             $name=$res[0]["nombre"];
 
-            setcookie("Nombre", $name, time()+3600);
             
+            $_SESSION["Nombre"] = $name;
+            $_SESSION["Correo"] = $res[0]["correo"];
+
+            echo $_SESSION["Correo"];
+
+            setcookie("Nombre", $_SESSION["Nombre"], time()+3600);
+            setcookie("Correo", $_SESSION["Correo"], time()+3600);
         }
 
     }
-
+    $banda = new tablas();
+    $banda->creaTablaRegalo();
 
 
  ?>

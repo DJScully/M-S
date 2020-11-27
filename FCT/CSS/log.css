@@ -3,3 +3,10 @@
 .sub{
     margin-bottom: 5%;
 }
+
+@media (max-width: 550px){
+
+    .test{
+        width: 100%;
+    }
+}

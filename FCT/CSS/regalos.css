@@ -30,3 +30,38 @@
     height: 20%;
     width: 100%;
 }
+
+
+@media (max-width: 550px){
+
+    .titulo{
+      font-size: 25px;
+    }
+
+    .hora{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .time > .test{
+   
+        width: auto;
+    }
+    
+
+    .foot{
+        padding-bottom: 40%;
+    }
+
+    .test{
+        width: 100%;
+    }
+
+    .select{
+        margin-top: 30px;
+        padding: 12px;
+        width: 100%;
+    }
+    
+    
+}

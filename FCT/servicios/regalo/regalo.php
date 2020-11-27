@@ -14,7 +14,7 @@
                 <img src="../../img/Meet & Surprizo.png" alt="Meet & Surprizo" class="logo">
             </div>
             <div class="barra">
-                
+                <button class="toogle" id="toogle">☰</button>
                     <ul class="list-group list-group-horizontal-lg">
                         <li class="list-group-item"> <a href=".."><button class="bot">Principal</button></a></li>
                         <li class="list-group-item"> <a href="../../Q_somos/quienes.html"><button class="bot">Quienes somos</button></a>   </li>
@@ -30,63 +30,92 @@
     <section class="fullWidth">
 
         <div class="container container1270">
-            
-            <form action= "" method="post" class="registro">
 
-            <?php
+     <?php   
        
 
        include("../../BD/tablas.php");
-           $estilo;$dir;$hora;$duracion;$errores = [];
+           $name;$dirR;$dirE; $horaE;$horaR;$errores = [];
+          
 
-           $good = false;
+           $good = false;$bien= false;
            if (isset($_POST["Enviar"])) {
-               if (isset($_POST["style"]) && !empty("style")) {
-                   if ($_POST["style"] == "electro" || $_POST["style"] == "concierto") {
-                      $estilo = $_POST["style"];
-                   } else {
-                       array_push($errores,"Por favor, escoja un estilo");
-                   }
-               }
+
+                if (isset($_POST["name"]) && !empty("name")) {
+                    
+                  $name = $_POST["name"];
+                    
+                }else {
+                    array_push($errores,"Por favor, introduzca un nombre");
+                }
 
                if (isset($_POST["calle"]) && !empty($_POST["calle"])) {
-                   $dir = $_POST["calle"];
+                   $dirR = $_POST["calle"];
                } else {
                    array_push($errores,"No ha introducido dirección");
                }
 
-               if (isset($_POST["hora"]) && !empty($_POST["hora"])) {
-                   $mañana = time() + (7 * 24 * 60 * 60);
+               if (isset($_POST["place"]) && !empty($_POST["place"])) {
+
+                $dirE = $_POST["place"];
+
+                } else {
+
+                array_push($errores,"No ha introducido dirección");
+
+                }
+
+               if (isset($_POST["hora1"]) && !empty($_POST["hora1"])) {
+                   $mañana = time() + (2 * 24 * 60 * 60);
                  
                    $mañana =  date("Y-m-d G-i");
-                   if ($_POST["hora"] > $mañana) {
-                       $hora = $_POST["hora"];
+                   if ($_POST["hora1"] > $mañana) {
+                       $horaR = $_POST["hora1"];
                        $good = true;
                    } else {
-                       array_push($errores,"Se debe alquilar con una semana de antelación");
+                       array_push($errores,"La fecha de recogida debe pedirse con 2 día de antelación");
                    }
                } else {
                    array_push($errores,"No ha introducido fecha");
                }
 
-               if (isset($_POST["alquiler"]) && !empty($_POST["alquiler"])) {
-                   if ($_POST["alquiler"] > 2) {
-                       $duracion = $_POST["alquiler"];
-                   } else {
-                       array_push($errores, "Las horas mínimas de alquiler son de 2 horas");
-                   }
-               }
+               if (isset($_POST["hora2"]) && !empty($_POST["hora2"])) {
+                $mañana = time() + (3 * 24 * 60 * 60);
+              
+                $mañana =  date("Y-m-d G-i");
+                if ($_POST["hora2"] > $mañana) {
+                    $horaE = $_POST["hora2"];
+                    $bien = true;
+                } else {
+                    array_push($errores,"La fecha de entrga debe pedirse mínimo 1 día despúes de la fecha de recogida");
+                }
+            } else {
+                array_push($errores,"No ha introducido fecha");
+            }
            }
 
            if (isset($_POST["Enviar"]) && $good == true) {
              
-               $banda = new tablas();
+                $banda = new tablas();
+                echo $name ."<br>";
+                echo $dirR ."<br>";
+                echo $dirE ."<br>";
+                echo $horaR ."<br>";
+                echo $horaE ."<br>";
+               print_r($_SESSION);
+               
+                $banda->anadirRegalo($_SESSION["Nombre"],$dirR,$dirE,$horaR,$horaE);
 
-               $banda->anadirBanda($estilo,$dir,$hora,$duracion);
-               $banda->anadirServicio("Banda",$dir,$hora);
-           }
+                $banda->anadirServicio($_SESSION["Correo"],"Regalo",$dirR,$horaR);
+                
+                echo "<h2 class='title'> Gracias por utilizar nuestros servicios, en unos segundos, le enviaremos a la página principal</h2>";
+           } else {
 
-           ?>
+            ?>
+            <form action= "<?php $_SERVER ["PHP_SELF"];?>" method="post" class="registro">
+
+
+           
                  <label class="lab" for="id_nombre">Nombre del Destinatario</label>
                 <input class="test" type="text" name="name" id="id_nombre">
 
@@ -101,18 +130,23 @@
                  <div class="hora">
                     <div class="time">
                         <label class="lab" for="id_hora">Hora de Recogida</label>
-                        <input class="test"  type="datetime-local" name="hora" id="id_hora">
+                        <input class="test"  type="datetime-local" name="hora1" id="id_hora">
                     </div>
                     
                     <div class="time">
                         <label class="lab" for="id_hora">Hora de Entrega</label>
-                        <input class="test"  type="datetime-local" name="hora" id="id_hora">
+                        <input class="test"  type="datetime-local" name="hora2" id="id_hora">
                     </div>
                     
                  </div>
                 <input class="test sub" type="submit" name="Enviar">
                 </form>
-
+            <?php 
+                for ($i=0; $i < count($errores); $i++) { 
+                    echo "<p class='card-text'>".$errores[$i] ."</p><br>";
+                }
+            }
+            ?>
         </div>
 
        
@@ -129,6 +163,7 @@
             </ul>
         </div>
     </footer>
+      <script src="../../JS/form.js"></script>
   
 </body>
 </html>

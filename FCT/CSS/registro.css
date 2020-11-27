@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: .3s;
 }
 
 .principal{
@@ -49,4 +50,12 @@
     width: 20%;
     border-radius: 25px;
     margin-top: 4%;
+}
+
+
+@media (max-width: 550px){
+
+    .test{
+        width: 100%;
+    }
 }

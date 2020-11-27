@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../test.css">
 </head>
 <body>
 
+
+
 <?php
-include("tablas.php");
+include("tablas.php");$new = new tablas();
 $option;$dir;$hora;$aceptada;
 $good = false;
 if(isset($_POST["Enviar"])){
@@ -41,9 +44,14 @@ if(isset($_POST["Enviar"])){
 if(isset($_POST["Enviar"]) && $good == true){
     $new = new tablas();
 
-    $new->anadirUsuario($option,$dir,$dura);
+    $new->anadirRegalo("Pickles","C/ San Martin 15","C/ Bolivar 34",
+    "2020-11-29T15:29","2020-11-30T16:30");
     $new->buscar($dura,$dir);
 }
+$new->anadirRegalo("Pickles","C/ San Martin 15","C/ Bolivar 34",
+    "2020-11-29T15:29","2020-11-30T16:30");
+
+    echo $_SESSION["Nombre"];
 
 ?>
     <form action= "<?php $_SERVER["PHP_SELF"] ?>" method="post" class="registro">
@@ -62,6 +70,13 @@ if(isset($_POST["Enviar"]) && $good == true){
                         <label for="id_term">He leido y acepto los <a href="#" target="_blank"> terminos y condiciones </a></label>
                     </div>
                     <input class="test sub" type="submit" name="Enviar">
+
+                    <ul class="final">
+                <li class="final-list"> <a href="#"> Facebook </a> </li>
+                <li class="final-list"> <a href="#"> Twitter </a></li>
+                <li class="final-list"> <a href="#"> Instagram </a></li>
+                <li class="final-list"> <a href="#"> Snapchat </a></li>
+            </ul>
         </form>
 
 </body>

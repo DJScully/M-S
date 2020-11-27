@@ -14,7 +14,7 @@
                 <img src="../../img/Meet & Surprizo.png" alt="Meet & Surprizo" class="logo">
             </div>
             <div class="barra">
-                
+            <button class="toogle" id="toogle">☰</button>
                     <ul class="list-group list-group-horizontal-lg">
                         <li class="list-group-item"> <a href="../.."><button class="bot">Principal</button></a></li>
                         <li class="list-group-item"> <a href="../../Q_somos/quienes.html"><button class="bot">Quienes somos</button></a>   </li>
@@ -30,7 +30,7 @@
 
     <section class="fullWidth">
 
-        <div class="container container1270">
+        <div class="container container1270 left" >
         <?php
        
 
@@ -39,49 +39,74 @@
 
             $good = false;
             if (isset($_POST["Enviar"])) {
+
                 if (isset($_POST["style"]) && !empty("style")) {
+
                     if ($_POST["style"] == "electro" || $_POST["style"] == "concierto") {
+
                        $estilo = $_POST["style"];
                     } else {
+
                         array_push($errores,"Por favor, escoja un estilo");
+
                     }
+
                 }
 
+
                 if (isset($_POST["calle"]) && !empty($_POST["calle"])) {
+
                     $dir = $_POST["calle"];
+
                 } else {
+
                     array_push($errores,"No ha introducido dirección");
+
                 }
 
                 if (isset($_POST["hora"]) && !empty($_POST["hora"])) {
+
                     $mañana = time() + (7 * 24 * 60 * 60);
                   
                     $mañana =  date("Y-m-d G-i");
+
                     if ($_POST["hora"] > $mañana) {
+
                         $hora = $_POST["hora"];
                         $good = true;
                     } else {
+
                         array_push($errores,"Se debe alquilar con una semana de antelación");
+
                     }
                 } else {
+
                     array_push($errores,"No ha introducido fecha");
+
                 }
 
                 if (isset($_POST["alquiler"]) && !empty($_POST["alquiler"])) {
+
                     if ($_POST["alquiler"] > 2) {
+
                         $duracion = $_POST["alquiler"];
+
                     } else {
+
                         array_push($errores, "Las horas mínimas de alquiler son de 2 horas");
+                        
                     }
                 }
             }
 
             if (isset($_POST["Enviar"]) && $good == true) {
-              
+              /* echo  $estilo,$dir,$hora,$duracion;*/
                 $banda = new tablas();
-
+                
+                echo $_SESSION["Nombre"];
+                $banda->servicio();
                 $banda->anadirBanda($estilo,$dir,$hora,$duracion);
-                $banda->anadirServicio("Banda",$dir,$hora);
+                $banda->anadirServicio($_SESSION["Correo"],"Banda",$dir,$hora);
             } else {
 
         ?>
@@ -140,5 +165,6 @@
         </div>
     </footer>
     <script src="../../JS/banda.js"></script>
+    <script src="../../JS/band.js"></script>
 </body>
 </html>
