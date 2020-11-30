@@ -20,7 +20,7 @@
                         <li class="list-group-item"> <a href="../Q_somos/quienes.html"><button class="bot">Quienes somos</button></a>   </li>
                         <li class="list-group-item"> <a href="../servicios/opcion.html"><button class="bot">Servicios</button></a> </li>                        
                         <li class="list-group-item"> <a href="#"><button class="bot">Foro</button></a></li>
-                        <li class="list-group-item"> <a href="login.html"><button class="bot">Log in</button></a></li>
+                        <li class="list-group-item"> <a href="login.php"><button class="bot">Log in</button></a></li>
                     </ul>
             </div>
         </div>
@@ -118,6 +118,10 @@ include("../BD/tablas.php");
         $new = $db->anadirUsuario($usr,$pass,$correo);
 
         setcookie("Usuario",$new,3600);
+
+        echo "<h2 class='title'>Se ha registrado e iniciado sesión con éxito, lo redigiremos a la página principal en unos segundos</h2>";
+        sleep(5);
+        header("Location: ../index.html");
        
         
     } else

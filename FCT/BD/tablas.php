@@ -78,7 +78,7 @@ return false;
         }
 
         function anadirRegalo($usr,$dir_recogida,$dir_entrega,$hora_recogida,$hora_entrega){
-            $this->db->errorInfo();
+            $let = $this->db->errorInfo();
             $sql = $this->db->prepare("INSERT INTO regalo (Nombre, D_recogida, D_llegada, H_recogida, H_llegada) VALUES (:usr, :dir_recogida, :dir_entrega
              :hora_recogida, :hora_entrega)");
            
@@ -88,15 +88,7 @@ return false;
             $sql->bindParam(":hora_recogida", $hora_recogida);
             $sql->bindParam(":hora_entrega", $hora_entrega);
 
-            if ($sql->execute()) {
-                echo "New record created successfully";
-                
-              } else {
-                echo "Unable to create record ";
-                print_r($this->db->errorInfo());
-
-                
-              }
+           $sql->execute();
         }
 
         function anadirBanda($Estilo,$D_Evento,$H_recogida,$H_contratadas){
@@ -109,13 +101,7 @@ return false;
             $sql->bindParam(":H_contratadas", $H_contratadas);
            
 
-            if ($sql->execute()) {
-                echo "New record created successfully";
-                
-              } else {
-                echo "Unable to create record";
-               
-              }
+            $sql->execute();
         }
 
         function anadirServicio($correo,$Estilo,$D_Evento,$H_recogida){
@@ -129,15 +115,8 @@ return false;
             $sql->bindParam(":pass", $D_Evento);
             $sql->bindParam(":correo", $H_recogida);
           
-           echo $_SESSION["Correo"];
 
-            if ($sql->execute()) {
-                echo "New record created successfully";
-                
-              } else {
-                echo "Unable to create record";
-               
-              }
+            $sql->execute();
         }
 
         function buscar($correo,$pass){
@@ -152,11 +131,18 @@ return false;
             
             $_SESSION["Nombre"] = $name;
             $_SESSION["Correo"] = $res[0]["correo"];
+        }
 
-            echo $_SESSION["Correo"];
+        function informes($correo){
 
-            setcookie("Nombre", $_SESSION["Nombre"], time()+3600);
-            setcookie("Correo", $_SESSION["Correo"], time()+3600);
+            $sql = $this->db->prepare("SELECT * FROM historial WHERE correo=:correo");
+            $sql->bindParam(":correo", $correo);
+            /*correo varchar(255), Estilo varchar(255) NOT NULL,
+        D_Evento varchar(255) NOT NULL,
+        Fecha datetime NOT NULL*/
+            $sql->execute();
+            $res = $sql->fetchAll();
+           return $res;
         }
 
     }

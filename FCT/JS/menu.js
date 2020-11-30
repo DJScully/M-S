@@ -55,6 +55,12 @@ function returned(){
         document.getElementsByClassName("list-group")[0].style.display = "flex"; 
         document.getElementsByClassName("list-group")[0].style.right = "0";
         document.getElementsByClassName("list-group")[0].style.position = "relative";
+    } else {
+        document.getElementsByClassName(" swiper-container")[0].style.marginTop = 0;
+        document.getElementsByClassName("list-group")[0].style.right = "-100%";
+        document.getElementById("toogle").innerHTML = "☰";
+        document.getElementsByClassName("list-group")[0].style.position = "relative"
+        
     }
 }
 

@@ -73,7 +73,9 @@
                 $new = $db->buscar($correo,$pass);
                 setcookie("Usuario",$new,3600);
                 
-                
+                echo "<h2 class='title'>Se ha iniciado sesión con éxito, lo redigiremos a la página principal en unos segundos</h2>";
+                sleep(5);
+                header("Location: ../index.html");
             } else
 
             

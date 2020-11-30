@@ -108,7 +108,9 @@ button:active{
 }
 
 .lado{
-    justify-content: center;
+    
+    margin-left: 10%;
+
 }
 
 
@@ -191,9 +193,25 @@ button:active{
 }
 
 .imagen{
-    margin-left: 5%;
+    margin-left: 2%;
 }
 
+.send::after {
+    content: "\2192";
+    font-size: 60px;
+    margin-left: 10px;
+}
+
+.lado::before {
+    content: "\2190";
+    font-size: 60px;
+    margin-left: 20px;
+}
+
+.lado {
+  
+    margin-left: 5%;
+}
 
 @media (max-width: 1324px){
 
@@ -279,11 +297,7 @@ button:active{
         height: 220px !important;
     }
 
-    .lado {
-        margin-left: 10%;
-    }
 
-  
 
 
 }

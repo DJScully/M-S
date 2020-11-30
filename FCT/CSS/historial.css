@@ -1,0 +1,17 @@
+@import "inicio.css";
+
+
+.historial{
+    border: solid #ff45da;
+    width: 100%;
+}
+
+.sector, .statue{
+    border: solid #ff45da;
+    width: auto;
+}
+
+.statue,th {
+    padding: 10px;
+}
+

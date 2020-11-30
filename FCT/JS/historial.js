@@ -9,23 +9,21 @@ function cargarEventos(evento) {
         }
     }
 }
-
 var cont = 0;
-
 function openNav() {
     var a = document.getElementsByClassName("fullWidth")[0].offsetWidth;
     
     if( a < 1324 && cont %2 == 0){
         document.getElementById("toogle").style.transition = ".3s";
-        
+        document.getElementsByClassName("informe")[0].style.transition = ".3s";
        
        
         document.getElementsByClassName("list-group")[0].style.position = "absolute";
         document.getElementsByClassName("list-group")[0].style.display = "flex";  
         var altura =  document.getElementsByClassName("list-group")[0].offsetHeight;
-        document.getElementsByClassName("presentación")[0].style.marginTop = altura+"px";
+        document.getElementsByClassName("informe")[0].style.marginTop = altura+"px";
         //document.getElementsByClassName("list-group")[0].style.height = altura+"px";
-      
+     // alert(altura);
         document.getElementsByClassName("list-group")[0].style.right = "0";
        // alert(document.getElementsByClassName("header")[0].offsetHeight);
        // alert( a);
@@ -37,7 +35,7 @@ function openNav() {
     } else {
         document.getElementsByClassName("list-group")[0].style.display = "none";
 
-        document.getElementsByClassName("presentación")[0].style.marginTop = 0;
+        document.getElementsByClassName("informe")[0].style.marginTop = 0;
         document.getElementsByClassName("list-group")[0].style.right = "-100%";
         document.getElementById("toogle").innerHTML = "☰";
         document.getElementsByClassName("list-group")[0].style.position = "relative"
@@ -52,7 +50,12 @@ function returned(){
     //alert("al");
     var a = document.getElementsByClassName("fullWidth")[0].offsetWidth;
     if (a > 1324){
-        document.getElementsByClassName("presentación")[0].style.marginTop = 0;
+        document.getElementsByClassName(" informe")[0].style.marginTop = 0;
+        document.getElementsByClassName("list-group")[0].style.display = "flex"; 
+        document.getElementsByClassName("list-group")[0].style.right = "0";
+        document.getElementsByClassName("list-group")[0].style.position = "relative";
+    } else  if (a > 1324){
+        document.getElementsByClassName(" informe")[0].style.marginTop = "100%";
         document.getElementsByClassName("list-group")[0].style.display = "flex"; 
         document.getElementsByClassName("list-group")[0].style.right = "0";
         document.getElementsByClassName("list-group")[0].style.position = "relative";

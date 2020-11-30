@@ -45,15 +45,19 @@ function openNav() {
    /* document.getElementById("boton").removeEventListener("click", closeBtn);
     document.getElementById("boton").addEventListener("click",openNav,false);*/
 }
-
 function returned(){
     //alert("al");
     var a = document.getElementsByClassName("fullWidth")[0].offsetWidth;
     if (a > 1324){
-        document.getElementsByClassName(" swiper-container")[0].style.marginTop = 0;
+        document.getElementsByClassName(" registro")[0].style.marginTop = 0;
         document.getElementsByClassName("list-group")[0].style.display = "flex"; 
         document.getElementsByClassName("list-group")[0].style.right = "0";
         document.getElementsByClassName("list-group")[0].style.position = "relative";
+    } else {
+      
+        document.getElementsByClassName("list-group")[0].style.right = "-100%";
+        document.getElementById("toogle").innerHTML = "☰";
+        document.getElementsByClassName("list-group")[0].style.position = "relative"
     }
 }
 

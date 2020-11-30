@@ -50,12 +50,12 @@ function returned(){
     //alert("al");
     var a = document.getElementsByClassName("fullWidth")[0].offsetWidth;
     if (a > 1324){
-        document.getElementsByClassName(" swiper-container")[0].style.marginTop = 0;
+        document.getElementsByClassName(" left")[0].style.marginTop = 0;
         document.getElementsByClassName("list-group")[0].style.display = "flex"; 
         document.getElementsByClassName("list-group")[0].style.right = "0";
         document.getElementsByClassName("list-group")[0].style.position = "relative";
     } else  if (a > 1324){
-        document.getElementsByClassName(" swiper-container")[0].style.marginTop = "100%";
+        document.getElementsByClassName(" left")[0].style.marginTop = "100%";
         document.getElementsByClassName("list-group")[0].style.display = "flex"; 
         document.getElementsByClassName("list-group")[0].style.right = "0";
         document.getElementsByClassName("list-group")[0].style.position = "relative";

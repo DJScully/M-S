@@ -19,8 +19,8 @@
                         <li class="list-group-item"> <a href=".."><button class="bot">Principal</button></a></li>
                         <li class="list-group-item"> <a href="../../Q_somos/quienes.html"><button class="bot">Quienes somos</button></a>   </li>
                         <li class="list-group-item"> <a href=".."><button class="bot">Servicios</button></a> </li>                        
-                        <li class="list-group-item"> <a href="#"><button class="bot">Foro</button></a></li>
-                        <li class="list-group-item"> <a href="../../Registro/login.html"><button class="bot">Log in</button></a></li>
+                        <li class="list-group-item"> <a href="../../historial/lista.php"><button class="bot">Historial</button></a></li>
+                        <li class="list-group-item"> <a href="../../Registro/login.php"><button class="bot">Log in</button></a></li>
                     </ul>
             </div>
         </div>
@@ -37,7 +37,9 @@
        include("../../BD/tablas.php");
            $name;$dirR;$dirE; $horaE;$horaR;$errores = [];
           
-
+           if(empty($_SESSION["Correo"])){
+                header("location: ../../Registro/login.php");
+            } else {
            $good = false;$bien= false;
            if (isset($_POST["Enviar"])) {
 
@@ -109,6 +111,8 @@
                 $banda->anadirServicio($_SESSION["Correo"],"Regalo",$dirR,$horaR);
                 
                 echo "<h2 class='title'> Gracias por utilizar nuestros servicios, en unos segundos, le enviaremos a la página principal</h2>";
+                sleep(5);
+                header("Location: ../../index.html");
            } else {
 
             ?>
@@ -146,6 +150,7 @@
                     echo "<p class='card-text'>".$errores[$i] ."</p><br>";
                 }
             }
+        }
             ?>
         </div>
 
