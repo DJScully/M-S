@@ -17,4 +17,4 @@ La planificación de la página web se llevó acabo durante la primera semana de
 
 Para los servicios de envío, investigamos a empresas como Correo, que se mantiene en el negocio de envío desde 1716, la cual gracias a su antiguedad, ha conseguido posicionarse como la mayor empresa de envíos emn España, arraigandose con la sociedad para ofrecer sus servicios, además de contar con varios tipos de servicios, como envíos rápidos o envíos internacionales ; sin embargo, no cuentan con una mayor cercanía con los clientes, ajustandonos lo más posible a sus indicaciones para ofrecer el mejor servicio, pudiendo hacer entregas en lugares públicos como centros comerciales o parques, para una mayor sorpresa hacia los destinatarios.
 
-Para el servicio de contratación de bandas musicales encontramos a la página gigstarter, la cual ofrece un servicio de contratación de bandas, pudiendo seleccionar bandas, diferenciandolas por género musical y tipo de banda.
+Para el servicio de contratación de bandas musicales encontramos a la página gigstarter, la cual ofrece un servicio de contratación de bandas, pudiendo seleccionar bandas, diferenciandolas por género musical y tipo de banda. 
