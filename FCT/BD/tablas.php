@@ -148,7 +148,7 @@ return false;
     }
     $banda = new tablas();
     $banda->creaTablaRegalo();
-
+ 
 
  ?>
 
